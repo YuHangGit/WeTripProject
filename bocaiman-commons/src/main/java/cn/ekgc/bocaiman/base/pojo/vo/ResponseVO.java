@@ -4,8 +4,6 @@ import cn.ekgc.bocaiman.base.enums.ResponseCodeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.xml.crypto.Data;
-import javax.xml.ws.Response;
 import java.io.Serializable;
 
 /**

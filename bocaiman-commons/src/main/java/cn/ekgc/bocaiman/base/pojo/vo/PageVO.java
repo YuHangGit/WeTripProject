@@ -3,7 +3,6 @@ package cn.ekgc.bocaiman.base.pojo.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.ws.rs.ApplicationPath;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;

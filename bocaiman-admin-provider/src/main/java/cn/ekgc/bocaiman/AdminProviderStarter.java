@@ -16,7 +16,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 //启动Cloud 微服务的EurekaClient
 @EnableEurekaClient
 //启动时扫描这个包下面的所有接口，防止接口没有实现
-@MapperScan("cn.bocaiman.*.dao")
+@MapperScan("cn.ekgc.bocaiman.dao")
 //标注这个是类是一个启动类
 @SpringBootApplication
 public class AdminProviderStarter {

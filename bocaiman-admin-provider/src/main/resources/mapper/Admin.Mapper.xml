@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ekgc.bocaiman.admin.dao.AdminDao">
+	<select id="findListByQuery" parameterType="Admin" resultMap="resultMap">
+		select
+			sa.id,
+			sa.name,
+			sa.cellphone,
+			sa.password,
+			sr.id roleId,
+			sr.name roleName,
+			sr.code roleCode,
+			sa.idCard,
+			sa.email,
+			sa.avatar,
+			sa.status,
+			sa.createAdmin,
+			sa.createTime,
+			sa.updateAdmin,
+			sa.updateTime
+		from
+			sys_admin sa join sys_role sr on sa.roleCode=sr.code
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id != null">sa.id=#{id} and </if>
+				<if test="name != null">sa.name like concat('%', #{name},'%') and </if>
+				<if test="cellphone != null">sa.cellphone=#{cellphone} and </if>
+				<if test="idCard != null">sa.idCard=#{idCard} and </if>
+				<if test="email != null">sa.email=#{email} and </if>
+				<if test="status != null">sa.status=#{status} and </if>
+			</trim>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="Admin">
+		insert into sys_admin(
+			<trim suffixOverrides=",">
+				<if test="id != null">id, </if>
+				<if test="name != null">name, </if>
+				<if test="cellphone != null">cellphone, </if>
+				<if test="password != null">password, </if>
+				<if test="role != null and role.code != null">roleCode, </if>
+				<if test="idCard != null">idCard, </if>
+				<if test="email != null">email, </if>
+				<if test="avatar != null">avatar, </if>
+				<if test="status != null">status, </if>
+				<if test="createAdmin != null">createAdmin, </if>
+				<if test="createTime != null">createTime, </if>
+				<if test="updateAdmin != null">updateAdmin, </if>
+				<if test="updateTime != null">updateTime, </if>
+			</trim>
+		) values (
+			<trim suffixOverrides=",">
+				<if test="id != null">#{id}, </if>
+				<if test="name != null">#{name}, </if>
+				<if test="cellphone != null">#{cellphone}, </if>
+				<if test="password != null">#{password}, </if>
+				<if test="role != null and role.code != null">#{role.code}, </if>
+				<if test="idCard != null">#{idCard}, </if>
+				<if test="email != null">#{email}, </if>
+				<if test="avatar != null">#{avatar}, </if>
+				<if test="status != null">#{status}, </if>
+				<if test="createAdmin != null">#{createAdmin}, </if>
+				<if test="createTime != null">#{createTime}, </if>
+				<if test="updateAdmin != null">#{updateAdmin}, </if>
+				<if test="updateTime != null">#{updateTime}, </if>
+			</trim>
+		)
+	</insert>
+
+	<update id="update" parameterType="Admin">
+		update sys_admin
+		<set>
+			<trim suffixOverrides=",">
+				<if test="name != null">name=#{name}, </if>
+				<if test="cellphone != null">cellphone=#{cellphone}, </if>
+				<if test="password != null">password=#{password}, </if>
+				<if test="role != null and role.code != null">roleCode=#{role.code}, </if>
+				<if test="idCard != null">idCard=#{idCard}, </if>
+				<if test="email != null">email=#{email}, </if>
+				<if test="avatar != null">avatar=#{avatar}, </if>
+				<if test="status != null">status=#{status}, </if>
+				<if test="createAdmin != null">createAdmin=#{createAdmin}, </if>
+				<if test="createTime != null">createTime=#{createTime}, </if>
+				<if test="updateAdmin != null">updateAdmin=#{updateAdmin}, </if>
+			</trim>
+		</set>
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id != null">id=#{id} and </if>
+			</trim>
+		</where>
+	</update>
+
+	<resultMap id="resultMap" type="Admin">
+		<id property="id" javaType="java.lang.String" column="id"></id>
+		<result property="name" javaType="java.lang.String" column="name"></result>
+		<result property="cellphone" javaType="java.lang.String" column="cellphone"></result>
+		<result property="password" javaType="java.lang.String" column="password"></result>
+		<result property="idCard" javaType="java.lang.String" column="idCard"></result>
+		<result property="email" javaType="java.lang.String" column="email"></result>
+		<result property="avatar" javaType="java.lang.String" column="avatar"></result>
+		<result property="status" javaType="java.lang.Integer" column="status"></result>
+		<result property="createAdmin" javaType="java.lang.String" column="createAdmin"></result>
+		<result property="createTime" javaType="java.util.Date" column="createTime"></result>
+		<result property="updateAdmin" javaType="java.lang.String" column="updateAdmin"></result>
+		<result property="updateTime" javaType="java.util.Date" column="updateTime"></result>
+		<association property="role" javaType="Role">
+			<id property="id" javaType="java.lang.String" column="roleId"></id>
+			<result property="name" javaType="java.lang.String" column="roleName"></result>
+			<result property="code" javaType="java.lang.String" column="roleCode"></result>
+		</association>
+	</resultMap>
+</mapper>
