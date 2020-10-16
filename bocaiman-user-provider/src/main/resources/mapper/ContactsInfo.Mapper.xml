@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ekgc.bocaiman.contactsInfo.dao.ContactsInfoDao">
+	<select id="findListByQuery" parameterType="ContactsInfo" resultMap="resultMap">
+		select
+			id,
+			corporation,
+			name,
+			cellphone,
+			idCard,
+			idCardImg,
+			checkStatus,
+			checkName,
+			checkTime,
+			createTime,
+			updateTime
+		from
+			sys_contacts_info
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id !=null">id=#{id} and </if>
+				<if test="corporation !=null">corporation=#{corporation} and </if>
+				<if test="name !=null">name=#{name} and </if>
+				<if test="cellphone !=null">cellphone=#{cellphone} and </if>
+				<if test="idCard !=null">idCard=#{idCard} and </if>
+				<if test="checkStatus !=null">checkStatus=#{checkStatus} and </if>
+				<if test="checkName !=null">checkName=#{checkName} and </if>
+			</trim>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="ContactsInfo">
+		insert into sys_contacts_info(
+		<trim suffixOverrides=",">
+			<if test="id != null">id, </if>
+			<if test="corporation != null">corporation, </if>
+			<if test="name != null">name, </if>
+			<if test="cellphone != null">cellphone, </if>
+			<if test="idCard != null">idCard, </if>
+			<if test="idCardImg != null">idCardImg, </if>
+			<if test="checkStatus != null">checkStatus, </if>
+			<if test="checkName != null">checkName, </if>
+			<if test="checkTime != null">checkTime, </if>
+			<if test="createTime != null">createTime, </if>
+			<if test="updateTime != null">updateTime, </if>
+		</trim>
+		) values (
+		<trim suffixOverrides=",">
+			<if test="id != null">#{id}, </if>
+			<if test="corporation != null">#{corporation}, </if>
+			<if test="name != null">#{name}, </if>
+			<if test="cellphone != null">#{cellphone}, </if>
+			<if test="idCard != null">#{idCard}, </if>
+			<if test="idCardImg != null">#{idCardImg}, </if>
+			<if test="checkStatus != null">#{checkStatus}, </if>
+			<if test="checkName != null">#{checkName}, </if>
+			<if test="checkTime != null">#{checkTime}, </if>
+			<if test="createTime != null">#{createTime}, </if>
+			<if test="updateTime != null">#{updateTime}, </if>
+		</trim>
+		)
+	</insert>
+
+	<update id="update" parameterType="ContactsInfo">
+		update sys_contacts_info
+		<trim suffixOverrides=",">
+			<if test="corporation != null">corporation, </if>
+			<if test="name != null">name, </if>
+			<if test="cellphone != null">cellphone, </if>
+			<if test="idCard != null">idCard, </if>
+			<if test="idCardImg != null">idCardImg, </if>
+			<if test="checkStatus != null">checkStatus, </if>
+			<if test="checkName != null">checkName, </if>
+			<if test="checkTime != null">checkTime, </if>
+			<if test="createTime != null">createTime, </if>
+			<if test="updateTime != null">updateTime, </if>
+		</trim>
+		<where>
+			<trim suffixOverrides="and">
+				<if test="id !=null">id=#{id} and </if>
+			</trim>
+		</where>
+	</update>
+
+	<resultMap id="resultMap" type="ContactsInfo">
+		<id property="id" javaType="java.lang.String" column="id"/>
+		<result property="corporation" javaType="java.lang.String" column="corporation"/>
+		<result property="name" javaType="java.lang.String" column="name"/>
+		<result property="cellphone" javaType="java.lang.String" column="cellphone"/>
+		<result property="idCard" javaType="java.lang.String" column="idCard"/>
+		<result property="idCardImg" javaType="java.lang.String" column="idCardImg"/>
+		<result property="checkStatus" javaType="java.lang.String" column="checkStatus"/>
+		<result property="checkName" javaType="java.lang.String" column="checkName"/>
+		<result property="checkTime" javaType="java.util.Date" column="checkTime"/>
+		<result property="createTime" javaType="java.util.Date" column="createTime"/>
+		<result property="updateTime" javaType="java.util.Date" column="updateTime"/>
+	</resultMap>
+</mapper>

@@ -2,6 +2,7 @@ package cn.ekgc.bocaiman.dao;
 
 
 import cn.ekgc.bocaiman.pojo.admin.entity.Admin;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
+@Repository
 public interface AdminDao {
 	/**
 	 * <b>根据查询对象查询列表</b>

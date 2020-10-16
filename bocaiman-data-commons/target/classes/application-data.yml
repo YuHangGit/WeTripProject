@@ -20,4 +20,4 @@ spring:
 ### MyBatis 相关信息
 mybatis:
   mapper-locations: classpath:/mapper/*.Mapper.xml
-  type-aliases-package: cn.bocaiman
+  type-aliases-package: cn.ekgc.bocaiman

@@ -1,6 +1,7 @@
 package cn.ekgc.bocaiman.dao;
 
 import cn.ekgc.bocaiman.pojo.admin.entity.Role;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
+@Repository
 public interface RoleDao {
 
 	/**
